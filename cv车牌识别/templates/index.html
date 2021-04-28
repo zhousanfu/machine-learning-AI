@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>车牌识别</title>
+</head>
+<body>
+   {{content}}
+<form method="post" action="/upload" enctype="multipart/form-data" target="ifm1">
+    {% csrf_token %}
+    <input type="file" name="licensePlate"/>
+    <input type="submit" value="Form表单提交"/>
+</form>
+</body>
+</html>

@@ -27,7 +27,7 @@ import io, time
 """## 1.1 数据预处理"""
 
 # pd_all = pd.read_csv('tmp/imo_all.csv', sep='\t', encoding='utf-8')
-pd_all = pd.read_csv(r'C:\Users\Administrator\Documents\GitHub\program_script\imo_train_text_review_20210413_sub450.csv', encoding='utf-8')
+pd_all = pd.read_csv('文本审核_20210416sub360.csv', sep='\t', encoding='utf-8')
 pd_all = shuffle(pd_all)
 print(len(pd_all))
 review_data, label_data = pd_all.content.replace(r'\n\t\r', '', regex=True), pd_all.label
@@ -83,7 +83,7 @@ model = tf.keras.Sequential([
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 model.summary()
 
-num_epochs = 10
+num_epochs = 1
 
 history = model.fit(
   training_padded,
@@ -103,11 +103,11 @@ history = model.fit(
 """
 
 # df = pd.read_csv('/content/drive/MyDrive/Colab Notebooks/data/imo_discover_comment_data_20210101-20210330.csv', sep='\t')
-df = pd.read_csv(r'C:\Users\Administrator\Documents\GitHub\program_script\imo_test_im.csv')
+df = pd.read_csv('资料.csv')
 df_data = df.values.tolist()
 data = []
 data_line = []
-my_test_sentences = df['a.msg'].values.tolist()
+my_test_sentences = df['a.contents'].values.tolist()
 text_sentences = tokenizer.texts_to_sequences([str(s) for s in my_test_sentences])
 my_text_padded = pad_sequences(text_sentences, maxlen=MAX_SEQUENCE_LENGTH)
 
@@ -130,5 +130,5 @@ for i in data_line:
 print('data_lin len=', len(data_line), data_line[0])
 print('data_len len=', len(data), data[0])
 # df = pd.DataFrame(data, columns=['day', 'opt_type', 'message', 'resource_id', 'comment_id', '得分', '标签(1=违规)'])
-df = pd.DataFrame(data, columns=['clo_1', 'clo_2', '得分', '标签(1=违规)'])
-df.to_excel("2预测_tmp_imomsg_encrypt.xlsx", index=False, sheet_name='Sheet1', encoding='utf-8')
+df = pd.DataFrame(data, columns=['clo_1', '次数', '得分', '标签(1=违规)'])
+df.to_excel("all_预测_imo_资料.xlsx", index=False, sheet_name='Sheet1', encoding='utf-8')
