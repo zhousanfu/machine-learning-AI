@@ -12,7 +12,7 @@ import tqdm
 import requests
 import PIL.Image
 from io import BytesIO
-import google.generativeai as genai
+from google import genai
 from typing import Any, List, Mapping, Optional
 from langchain.llms.base import LLM
 from langchain.callbacks.manager import CallbackManagerForLLMRun
