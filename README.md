@@ -5,6 +5,9 @@
  * @LastEditTime: 2024-10-17 04:57:28
  * @FilePath: /machine-learning-AI/README.md
 -->
+
+https://grapecity-ai.github.io/gc-qa-rag/zh/
+
 # NLP
 bilstm_crf命名实体：[bert_bilstm_crf_ner](https://github.com/zhousanfu/machine-learning-demo/blob/master/nlp/nlp_entity_recognize_bert4keras_crf.ipynb)
 
